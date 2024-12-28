@@ -2,6 +2,11 @@
 
 This project is a luxury estate website built with Node.js, Express, and PostgreSQL. It also provides users with property recommendations based on their past interactions.
 
+![the login page ](./login_page.png)
+
+![the home page ](./properties.png)
+
+![the recc page ](./recommendation.png)
 ## Table of Contents
 
 - [Installation](#installation)
