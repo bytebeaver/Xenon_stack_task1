@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Luxury Estates - Property at <%= property.location %></title>
+		<link
+			rel="icon"
+			href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏡</text></svg>"
+		/>
+		<link rel="stylesheet" href="/styles.css" />
+	</head>
+	<body>
+		<nav class="main-nav">
+			<a href="/" class="logo">🏡 Luxury Estates</a>
+			<div class="nav-links">
+				<% if(locals.loggedIn){ %>
+					<a href="/logout">Logout</a>
+				  <% } else{ %>  
+					<a href="/login">Login</a>
+				 <% } %>
+			</div>
+		</nav>
+
+		<main class="property-container">
+			<h1>Property Details:</h1>
+			<section>
+				<div class="image-scroller">
+					<img src="/images/<%= property.id %>_frontal.jpg" alt="<%= property.location %>" />
+					<img src="/images/<%= property.id %>_bedroom.jpg" alt="<%= property.location %>" />
+					<img src="/images/<%= property.id %>_bathroom.jpg" alt="<%= property.location %>" />
+					<img src="/images/<%= property.id %>_kitchen.jpg" alt="<%= property.location %>" />
+				</div>
+
+				<div class="property-full-details">
+					<h3><%= property.location %></h3>
+					<p class="price">$<%= property.price.toLocaleString() %></p>
+					<p class="specs">
+						<%= property.bedrooms %> beds • <%= property.bathrooms %> baths • <%=
+						property.area.toLocaleString() %> sq ft
+					</p>
+					<p>
+						A luxurious house with <%= property.bedrooms %> and <%= property.bathrooms %> bathrooms, located
+						in the beautiful city of <%= property.location %>. The house is equipped with a modern kitchen,
+						a spacious living room, and a large backyard.
+					</p>
+				</div>
+			</section>
+		</main>
+	</body>
+</html>

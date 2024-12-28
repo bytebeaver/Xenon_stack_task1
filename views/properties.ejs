@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Luxury Estates - Properties</title>
+		<link rel="stylesheet" href="/styles.css" />
+		<link
+			rel="icon"
+			href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏡</text></svg>"
+		/>
+	</head>
+	<body>
+		<nav class="main-nav">
+			<a href="/" class="logo">🏡 Luxury Estates</a>
+			<div class="nav-links">
+				<% if(locals.loggedIn){ %>
+				<a href="/logout">Logout</a>
+				<% } else{ %>
+				<a href="/login">Login</a>
+				<% } %>
+			</div>
+		</nav>
+
+		<main class="properties-container">
+			<% if(locals.loggedIn && recommendations.length){ %>
+			<h1>Recommended for you:</h1>
+			<section class="featured-properties">
+				<div class="property-grid">
+					<% recommendations.forEach(property => { %>
+					<a href="/properties/<%= property.id %>" class="property-card" data-id="<%= property.id %>">
+						<div class="property-image">
+							<img src="/images/<%= property.id %>_frontal.jpg" alt="<%= property.location %>" />
+						</div>
+						<div class="property-details">
+							<h3><%= property.location %></h3>
+							<p class="price">$<%= property.price.toLocaleString() %></p>
+							<p class="specs">
+								<%= property.bedrooms %> beds • <%= property.bathrooms %> baths • <%=
+								property.area.toLocaleString() %> sq ft
+							</p>
+							<p class="location"><%= property.zipcode %>, <%= property.location %></p>
+						</div>
+					</a>
+					<% }); %>
+				</div>
+			</section>
+			<% }%>
+
+			<h1>Popular Properties:</h1>
+			<section class="featured-properties">
+				<div class="property-grid">
+					<% properties.forEach(property => { %>
+					<a href="/properties/<%= property.id %>" class="property-card" data-id="<%= property.id %>">
+						<div class="property-image">
+							<img src="/images/<%= property.id %>_frontal.jpg" alt="<%= property.location %>" />
+						</div>
+						<div class="property-details">
+							<h3><%= property.location %></h3>
+							<p class="price">$<%= property.price.toLocaleString() %></p>
+							<p class="specs">
+								<%= property.bedrooms %> beds • <%= property.bathrooms %> baths • <%=
+								property.area.toLocaleString() %> sq ft
+							</p>
+							<p class="location"><%= property.zipcode %>, <%= property.location %></p>
+						</div>
+					</a>
+					<% }); %>
+				</div>
+			</section>
+		</main>
+	</body>
+</html>
